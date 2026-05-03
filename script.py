@@ -13,7 +13,7 @@ cloudinary.config(
 )
 
 def update_trmnl_display():
-    tag_name = "black_and_white" # Change this if your tag is different
+    tag_name = "mono" # Change this if your tag is different
     
     try:
         print(f"Fetching images tagged with: {tag_name}")
