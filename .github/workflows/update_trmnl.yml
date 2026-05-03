@@ -1,0 +1,35 @@
+name: Update TRMNL Display
+
+on:
+  schedule:
+    # Runs at the top of every hour. 
+    # Change to "0 */2 * * *" for every 2 hours, or "0 0 * * *" for once a day.
+    - cron: '0 * * * *'
+  workflow_dispatch: 
+    # This allows you to run it manually from the Actions tab for testing!
+
+jobs:
+  update-screen:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Script
+        env:
+          CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
+          CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
+          CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
+          TRMNL_API_KEY: ${{ secrets.TRMNL_API_KEY }}
+          TRMNL_PLUGIN_UUID: ${{ secrets.TRMNL_PLUGIN_UUID }}
+        run: python script.py
