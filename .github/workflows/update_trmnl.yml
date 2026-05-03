@@ -2,15 +2,16 @@ name: Update TRMNL Display
 
 on:
   schedule:
-    # Runs at the top of every hour. 
-    # Change to "0 */2 * * *" for every 2 hours, or "0 0 * * *" for once a day.
     - cron: '0 * * * *'
   workflow_dispatch: 
-    # This allows you to run it manually from the Actions tab for testing!
 
 jobs:
   update-screen:
     runs-on: ubuntu-latest
+    
+    # Add this env block right here!
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
       - name: Checkout Repository
