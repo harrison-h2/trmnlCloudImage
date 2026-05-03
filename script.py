@@ -41,7 +41,7 @@ def update_trmnl_display():
 
         # Push to TRMNL Webhook
         plugin_uuid = os.environ.get("TRMNL_PLUGIN_UUID")
-        trmnl_webhook_url = f"https://trmnl.com/api/plugins/{plugin_uuid}/webhook"
+        trmnl_webhook_url = f"https://trmnl.com/api/custom_plugins/{plugin_uuid}"
         trmnl_api_key = os.environ.get("TRMNL_API_KEY")
         
         headers = {
