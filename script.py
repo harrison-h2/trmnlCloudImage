@@ -30,10 +30,11 @@ def update_trmnl_display():
         # Generate TRMNL-optimized URL (800x480, grayscale)
         optimized_url, _ = cloudinary.utils.cloudinary_url(
             public_id,
-            width=800,
-            height=480,
+            width=760,
+            height=440,
             crop="fill",
             effect="grayscale",
+            border="20px_solid_white",
             format="jpg"
         )
         
